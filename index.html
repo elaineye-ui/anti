@@ -1,0 +1,230 @@
+import React, { useState } from 'react';
+import { 
+  Network, 
+  Eye, 
+  Cpu, 
+  Sparkles, 
+  MessageSquare, 
+  Wand2, 
+  Layout, 
+  Zap, 
+  BarChart3, 
+  Database, 
+  LineChart, 
+  Search,
+  ChevronRight,
+  ChevronLeft,
+  Settings,
+  ShieldCheck,
+  MousePointer2
+} from 'lucide-react';
+
+const App = () => {
+  const [page, setPage] = useState(1);
+
+  // --- Page 1: Principles & Features ---
+  const Principles = () => (
+    <div className="space-y-8 animate-in fade-in duration-700">
+      <div className="text-center">
+        <div className="inline-block p-3 bg-indigo-100 rounded-2xl text-indigo-600 mb-4">
+          <Network size={32} />
+        </div>
+        <h2 className="text-3xl font-bold text-slate-800">第一部分：HHG 智慧中樞的運作邏輯</h2>
+        <p className="text-slate-500 mt-2">基於 Google Antigravity 技術，打造不需代碼的企業核心</p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        {[
+          { icon: <Cpu className="text-blue-500" />, title: "Agent 代理團隊", desc: "中樞內建多名 AI 專家，能自動分工處理設計、開發與邏輯測試，將你的指令轉化為可執行的軟體工具。" },
+          { icon: <Eye className="text-purple-500" />, title: "視覺辨識驗證", desc: "具備「電腦操作」能力，AI 會像人一樣觀看螢幕，確保網站按鈕、圖表與數據顯示在最正確的位置。" },
+          { icon: <Zap className="text-green-500" />, title: "自主邏輯推理", desc: "在執行任務前會先進行「深度思考」，預判可能遇到的 Bug 並提前規避，讓系統運作極其穩定。" }
+        ].map((item, i) => (
+          <div key={i} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="mb-4">{item.icon}</div>
+            <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-indigo-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden">
+        <div className="relative z-10">
+          <h4 className="font-bold text-xl mb-4 flex items-center gap-2">
+            <ShieldCheck className="text-indigo-300" /> 中樞核心特色
+          </h4>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+              <p className="font-bold text-indigo-300 mb-1">零技術門檻</p>
+              <p className="text-xs text-slate-400">營運人員只需提出業務需求，中樞自動生成對應的系統介面與後端邏輯。</p>
+            </div>
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+              <p className="font-bold text-indigo-300 mb-1">極速自動化</p>
+              <p className="text-xs text-slate-400">從一個想法到系統上線，傳統開發需數週，HHG 智慧中樞僅需數分鐘。</p>
+            </div>
+          </div>
+        </div>
+        <div className="absolute top-0 right-0 p-8 opacity-10">
+          <Settings size={120} className="animate-spin-slow" />
+        </div>
+      </div>
+    </div>
+  );
+
+  // --- Page 2: Vibe Coding ---
+  const VibeCoding = () => {
+    const [vibeStep, setVibeStep] = useState(0);
+    const steps = [
+      { icon: <MessageSquare />, title: "語意描述 (Vibe)", content: "「我想要一個電商庫存監控網站，風格要像專業的儀表板，低庫存要用醒目的警告色。」" },
+      { icon: <Network />, title: "中樞計畫擬定", content: "HHG 會先列出：1.串接庫存資料庫 2.建立視覺圖表 3.設定自動警示邏輯。請您確認計畫。" },
+      { icon: <MousePointer2 />, title: "視覺對齊與生成", content: "AI 開始撰寫代碼並自動操作瀏覽器，反覆測試按鈕點擊與排版美感，確保符合您的『視覺感覺』。" },
+      { icon: <Layout />, title: "系統佈署上線", content: "完成！您的公司系統網站已建立。未來只需對話即可擴充功能，無需重新撰寫程式碼。" }
+    ];
+
+    return (
+      <div className="space-y-8 animate-in slide-in-from-right duration-700">
+        <div className="text-center">
+          <div className="inline-block p-3 bg-pink-100 rounded-2xl text-pink-600 mb-4">
+            <Wand2 size={32} />
+          </div>
+          <h2 className="text-3xl font-bold text-slate-800">第二部分：Vibe Coding 實戰開發</h2>
+          <p className="text-slate-500 mt-2">如何透過「描述感覺」來建立您的公司系統網站？</p>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="md:w-1/2 space-y-4">
+            {steps.map((s, idx) => (
+              <div 
+                key={idx}
+                onClick={() => setVibeStep(idx)}
+                className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${vibeStep === idx ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg' : 'bg-white border-slate-100 text-slate-600 hover:border-indigo-200'}`}
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`p-2 rounded-lg ${vibeStep === idx ? 'bg-indigo-500' : 'bg-slate-50'}`}>{s.icon}</div>
+                  <span className="font-bold">{s.title}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="md:w-1/2 bg-slate-900 rounded-[2rem] p-8 text-white flex flex-col justify-center relative shadow-2xl">
+            <div className="mb-4 text-indigo-400 font-mono text-xs uppercase tracking-widest">Process Step {vibeStep + 1}</div>
+            <h3 className="text-xl font-bold mb-4">{steps[vibeStep].title}</h3>
+            <p className="text-slate-300 leading-relaxed italic border-l-4 border-indigo-500 pl-4">
+              「{steps[vibeStep].content}」
+            </p>
+            <div className="mt-8 flex justify-center">
+               <div className="animate-pulse flex gap-2">
+                 {[...Array(3)].map((_, i) => <div key={i} className="w-2 h-2 bg-indigo-500 rounded-full"></div>)}
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // --- Page 3: Specific Scenarios ---
+  const Scenarios = () => (
+    <div className="space-y-8 animate-in slide-in-from-bottom duration-700">
+      <div className="text-center">
+        <div className="inline-block p-3 bg-green-100 rounded-2xl text-green-600 mb-4">
+          <BarChart3 size={32} />
+        </div>
+        <h2 className="text-3xl font-bold text-slate-800">第三部分：HHG 智慧中樞的四大營運場景</h2>
+        <p className="text-slate-500 mt-2">將瑣碎工作自動化，讓營運重心重回決策核心</p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {[
+          { 
+            icon: <Database className="text-blue-500" />, 
+            title: "1. 內部資料與系統統一入口", 
+            task: "整合 ERP、CRM 與庫存系統。營運同仁只需對中樞說：『查一下 A 商品在所有通路的剩餘庫存』，中樞即刻彙整呈現，無需跨後台查詢。" 
+          },
+          { 
+            icon: <LineChart className="text-purple-500" />, 
+            title: "2. 業績 / 廣告報表中心", 
+            task: "自動串接 FB/Google 廣告與電商訂單。當廣告轉換率低於設定值時，中樞會自動產出對比分析圖表，並主動提示異常來源。" 
+          },
+          { 
+            icon: <Sparkles className="text-yellow-600" />, 
+            title: "3. 經營決策分析師", 
+            task: "基於歷史數據進行銷售預測。中樞會主動建議：『下週適逢連續假期，根據去年數據，建議 A 系列商品加碼 20% 庫存並啟動促銷活動。』" 
+          },
+          { 
+            icon: <Search className="text-red-500" />, 
+            title: "4. 競品動態追蹤", 
+            task: "全天候監控主要競爭對手的賣場。當對方調降價格或更換活動素材時，中樞會立即截圖並分析對我方流量的潛在影響。" 
+          }
+        ].map((s, i) => (
+          <div key={i} className="group bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-indigo-500 transition-all shadow-sm">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 bg-slate-50 rounded-xl text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
+                {s.icon}
+              </div>
+              <h3 className="font-bold text-lg">{s.title}</h3>
+            </div>
+            <p className="text-slate-500 text-sm leading-relaxed">{s.task}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 p-10 bg-white rounded-[3rem] border-2 border-dashed border-slate-200 text-center">
+        <h3 className="text-2xl font-bold mb-2">啟動 HHG 智慧中樞</h3>
+        <p className="text-slate-500 text-sm mb-6">讓技術服務於營運，讓數據驅動增長。</p>
+        <button className="bg-indigo-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-indigo-700 transition-all">
+          進入中樞管理介面
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-[#FDFDFF] text-slate-900 p-4 md:p-12 font-sans selection:bg-indigo-100">
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Navigation Indicator */}
+        <div className="flex justify-center mb-16">
+          <div className="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 flex gap-2">
+            {[1, 2, 3].map((num) => (
+              <button 
+                key={num}
+                onClick={() => setPage(num)}
+                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${page === num ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-400 hover:bg-slate-50'}`}
+              >
+                {num === 1 ? '智慧原理' : num === 2 ? '實戰開發' : '營運場景'}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Dynamic Content */}
+        <div className="min-h-[600px]">
+          {page === 1 && <Principles />}
+          {page === 2 && <VibeCoding />}
+          {page === 3 && <Scenarios />}
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="mt-16 flex justify-between items-center bg-white p-4 rounded-3xl border border-slate-100 shadow-xl">
+          <button 
+            onClick={() => setPage(Math.max(1, page - 1))}
+            className={`flex items-center gap-2 px-6 py-2 rounded-2xl font-bold transition-all ${page === 1 ? 'opacity-0 cursor-default' : 'hover:bg-slate-100 text-slate-600'}`}
+          >
+            <ChevronLeft size={18} /> 上一頁
+          </button>
+          <div className="text-slate-400 text-xs font-mono tracking-tighter">
+            HHG-CORE-v2.5 // PAGE 0{page}
+          </div>
+          <button 
+            onClick={() => setPage(Math.min(3, page + 1))}
+            className={`flex items-center gap-2 px-8 py-2 rounded-2xl font-bold transition-all ${page === 3 ? 'bg-green-600 text-white shadow-green-600/20' : 'bg-indigo-600 text-white shadow-indigo-600/20 hover:bg-indigo-700 shadow-lg'}`}
+          >
+            {page === 3 ? "立即部署" : "下一章節"} <ChevronRight size={18} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
